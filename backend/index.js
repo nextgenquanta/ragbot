@@ -2,12 +2,17 @@ import express from "express";
 import dotenv from "dotenv";
 import ragbotRoutes from "./routes/v1/ragbot.route.js";
 import { connectDB } from "./db/dbConnection.js";
+import cors from "cors";
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 dotenv.config();
 await connectDB();
-const PORT = process.env.PORT || 3001;
-
+app.use(
+  cors({
+    origin: ["http://localhost:5173"],
+  }),
+);
 app.use(express.json());
 app.use("/api/v1/ragbot", ragbotRoutes);
 

@@ -1,10 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export const darkMode = ["class"];
 export const content = [
-  './pages/**/*.{ts,tsx}',
-  './components/**/*.{ts,tsx}',
-  './app/**/*.{ts,tsx}',
-  './src/**/*.{ts,tsx}',
+  "./pages/**/*.{ts,tsx}",
+  "./components/**/*.{ts,tsx}",
+  "./app/**/*.{ts,tsx}",
+  "./src/**/*.{ts,tsx}",
 ];
 export const prefix = "";
 export const theme = {
@@ -78,6 +78,7 @@ export const theme = {
       roboto: ["Roboto", "sans-serif"],
       mukta: ["Mukta", "sans-serif"],
       inter: ["Inter", "sans-serif"],
+      sedan: ["Sedan", "ui-sans-serif"],
       "chakra-petch": ['"Chakra Petch"', "sans-serif"],
     },
   },
