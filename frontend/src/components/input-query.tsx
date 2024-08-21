@@ -64,9 +64,10 @@ function InputQuery() {
       return;
     }
 
+    // adding links to empty array for this
     setChatMessages((prevMessages) => [
       ...prevMessages,
-      { text: inputValue, isUser: true },
+      { text: inputValue, isUser: true, links: [] },
     ]);
 
     try {
@@ -83,13 +84,15 @@ function InputQuery() {
         },
       );
       if (!response.ok) {
+        setIsLoading(false);
         throw new Error("Server Response was not ok");
       }
       setInputValue("");
       const data = await response.json();
+      console.log(data);
       setChatMessages((prevMessages) => [
         ...prevMessages,
-        { text: data.data.kwargs.content, isUser: false },
+        { text: data.response, isUser: false, links: data.links },
       ]);
       setIsLoading(false);
     } catch (err) {

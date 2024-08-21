@@ -1,16 +1,20 @@
 import { useState, useContext, useMemo, createContext } from "react";
 
+interface LinkType {
+  text: string;
+  url: string;
+}
+
 interface ChatMessage {
   text: string;
+  links: LinkType[];
   isUser: boolean;
 }
 
 // context type for chatMessages
 interface ChatContextType {
   chatMessages: ChatMessage[];
-  setChatMessages: (
-    messages: ChatMessage[] | ((prevMessages: ChatMessage[]) => ChatMessage[]),
-  ) => void;
+  setChatMessages: React.Dispatch<React.SetStateAction<ChatMessage[]>>;
 }
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined);

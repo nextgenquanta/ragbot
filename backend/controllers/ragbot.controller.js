@@ -66,9 +66,27 @@ export const getResponse = async (req, res) => {
       question: query,
     });
 
+    // console.log(response.content);
+
+    // Process the response text to extract links and points
+    const responseText = response.content;
+    const linkRegex = /\[(.*?)\]\((.*?)\)/g;
+    const links = [];
+    let processedText = responseText.replace(linkRegex, (match, text, url) => {
+      links.push({ text, url });
+      return `- [${text}](${url})`;
+    });
+    console.log(processedText, links);
+
+    const points = processedText
+      .split("\n")
+      .filter((line) => line.startsWith("- "));
+    console.log(points);
+
     return res.status(200).json({
       message: "response genrated successfully",
-      data: response,
+      response: response.content,
+      links: links,
     });
   } catch (err) {
     console.log(err);
