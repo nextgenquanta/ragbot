@@ -6,7 +6,6 @@ export default function TextToDisplay({ content }: { content: string }) {
     <div className="space-y-1">
       {lines.map((line, index) => {
         // regex to match text wrapped into double quotes
-        const regex = /\*\*(.*?)\*\*/g;
         return <p key={index}>{line}</p>;
       })}
     </div>
