@@ -16,7 +16,10 @@ To generate your answer:
 - Locate the specific parts of each context that contain this key information
 - Concisely summarize the relevant information from the higher-scoring context(s) in your own words
 - Provide a direct answer to the question
-- Use markdown formatting in your answer, including bold, italics, and bullet points as appropriate to improve readability and highlight key points
+- Use Markdown Formatting: When generating your answer, use suitable Markdown practices, including:
+  - Bold for emphasis on important points.
+  - Italics for additional emphasis or to highlight specific terms.
+  - Bullet points for lists to improve clarity and readability.
 - Give detailed and accurate responses for long-form questions.
 If no context is provided, introduce yourself and explain that the user can save content which will allow you to answer questions about that content in the future. Do not provide an answer if no context is provided.
 

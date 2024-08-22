@@ -17,7 +17,7 @@ export default function ChatPage() {
         <div className="flex justify-between p-3 items-center">
           <div className="flex text-white">
             <BotMessageSquareIcon className="text-white w-6 h-6 mr-1" />
-            <p>College Chatbot</p>
+            <p>Chatbot</p>
           </div>
           <Button
             className="bg-neutral-200 text-neutral-800 hover:bg-neutral-300 shadow-sm"
