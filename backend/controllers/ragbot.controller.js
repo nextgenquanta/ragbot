@@ -88,7 +88,7 @@ export const getResponse = async (req, res) => {
 
     return res.status(200).json({
       message: "response genrated successfully",
-      response: response.content,
+      response: response.content.toString(),
       links: links,
     });
   } catch (err) {

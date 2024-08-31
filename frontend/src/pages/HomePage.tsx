@@ -76,7 +76,7 @@ export default function HomePage(): JSX.Element {
 
       setMessages((prev) => [
         ...prev,
-        { text: data.data.kwargs.content, isUser: false },
+        { text: data.response, isUser: false },
       ]);
 
       setInputValue("");
@@ -94,7 +94,7 @@ export default function HomePage(): JSX.Element {
   };
 
   return (
-    <div className="flex flex-col h-screen text-neutral-400">
+    <div className="flex flex-col h-screen  mx-auto  bg-slate-100 text-neutral-400">
       <div
         ref={chatContainerRef}
         className="flex-1 overflow-y-auto p-4 space-y-4"
@@ -102,10 +102,10 @@ export default function HomePage(): JSX.Element {
         {messages.map((message, index) => (
           <div
             key={message.text}
-            className={`flex ${message.isUser ? "justify-end" : "justify-start"}`}
+            className={`flex ${message.isUser ? "justify-end w-[80vw] mx-auto " : "w-[80vw] mx-auto justify-start"}`}
           >
             <div
-              className={`max-w-[70%] p-2 rounded-lg ${message.isUser ? "bg-blue-500 text-white" : "bg-gray-200 text-black"}`}
+              className={`max-w-[70%] p-2 rounded-lg ${message.isUser ? " bg-blue-500 text-white" : "bg-gray-200 text-black"}`}
             >
               {message.text}
             </div>
