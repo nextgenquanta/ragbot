@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, ChangeEvent } from "react";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
-import { SendHorizonalIcon, LoaderCircleIcon } from "lucide-react";
+import { SendHorizonalIcon, LoaderIcon } from "lucide-react";
 import { useChat } from "@/hooks/useChat";
 
 function InputQuery() {
@@ -70,9 +70,10 @@ function InputQuery() {
       { text: inputValue, isUser: true, links: [] },
     ]);
 
+    // https://ragdeploycheck.onrender.com/api/v1/ragbot/response
     try {
       const response = await fetch(
-        "https://ragdeploycheck.onrender.com/api/v1/ragbot/response",
+        "http://localhost:3000/api/v1/ragbot/response",
         {
           method: "POST",
           headers: {
@@ -89,7 +90,7 @@ function InputQuery() {
       }
       setInputValue("");
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setChatMessages((prevMessages) => [
         ...prevMessages,
         { text: data.response, isUser: false, links: data.links },
@@ -139,7 +140,7 @@ function InputQuery() {
             disabled={isLoading}
           >
             {isLoading ? (
-              <LoaderCircleIcon className="animate-spin w-3 h-3" />
+              <LoaderIcon className="animate-spin w-4 h-4" />
             ) : (
               <SendHorizonalIcon className="w-3 h-3 mr-1" />
             )}
@@ -149,7 +150,7 @@ function InputQuery() {
       ) : (
         <div className={`absolute right-3 top-1/2 transform -translate-y-1/2`}>
           {isLoading ? (
-            <LoaderCircleIcon className="animate-spin w-3 h-3" />
+            <LoaderIcon className="animate-spin w-3 h-3" />
           ) : (
             <SendHorizonalIcon
               className="text-neutral-700"
