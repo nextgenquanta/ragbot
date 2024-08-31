@@ -61,7 +61,7 @@ export default function HomePage(): JSX.Element {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/api/v1/ragbot/response",
+        "https://ragdeploycheck.onrender.com/api/v1/ragbot/response",
         {
           method: "POST",
           headers: {

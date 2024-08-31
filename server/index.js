@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import ragbotRoutes from "./routes/v1/ragbot.route.js";
 import { connectDB } from "./db/dbConnection.js";
 import cors from "cors";
+import path from "path"
 const PORT = process.env.PORT || 3001;
 
 const app = express();
@@ -10,7 +11,7 @@ dotenv.config();
 await connectDB();
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["https://ragdeploycheck.onrender.com"],
   })
 );
 
@@ -28,5 +29,5 @@ app.get("*", (req, res) => {
 });
 
 app.listen(PORT, () =>
-  console.log(`Server is running on port http://localhost:${PORT}`)
+  console.log(`Server is running on port https://ragdeploycheck.onrender.com`)
 );
