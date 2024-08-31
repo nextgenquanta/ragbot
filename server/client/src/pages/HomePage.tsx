@@ -99,7 +99,7 @@ export default function HomePage(): JSX.Element {
         ref={chatContainerRef}
         className="flex-1 overflow-y-auto p-4 space-y-4"
       >
-        {messages.map((message, index) => (
+        {messages.map((message) => (
           <div
             key={message.text}
             className={`flex ${message.isUser ? "justify-end w-[80vw] mx-auto " : "w-[80vw] mx-auto justify-start"}`}

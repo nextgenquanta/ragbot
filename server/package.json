@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "dev": "node --watch index.js",
-    "format": "npx prettier . --write"
+    "format": "npx prettier . --write",
+    "build": "npm install --prefix ./client && npm run build --prefix ./client && npm install"
   },
   "keywords": [],
   "author": "",
