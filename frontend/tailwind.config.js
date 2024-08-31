@@ -84,4 +84,7 @@ export const theme = {
   },
 };
 // eslint-disable-next-line no-undef
-export const plugins = [require("tailwindcss-animate"),require("@tailwindcss/typography"),];
+export const plugins = [
+  require("tailwindcss-animate"),
+  require("@tailwindcss/typography"),
+];
