@@ -20,7 +20,7 @@ export default function ChatPage() {
             <p>Chatbot</p>
           </div>
           <Button
-            className="bg-neutral-200 text-neutral-800 hover:bg-neutral-300 shadow-sm"
+            className="bg-neutral-200 text-neutral-800 rounded-sm hover:bg-neutral-300 shadow-sm"
             onClick={handleNewChatClick}
           >
             New Chat

@@ -17,7 +17,7 @@ export default function ChatComponent() {
         {chatMessages.length >= 1 ? (
           <div className="space-y-3 py-20">
             {chatMessages.map((message) => {
-              console.log(message.text);
+              // console.log(message.text);
               return (
                 <div key={message.text}>
                   {message.isUser ? (
@@ -30,7 +30,7 @@ export default function ChatComponent() {
                     >
                       <div className="flex justify-end pb-2">
                         <div className="flex max-w-sm">
-                          <p className="p-2 text-sm bg-neutral-200 rounded-md px-3">
+                          <p className="p-2 text-sm bg-neutral-200 rounded-r-md rounded-bl-md px-3">
                             {message.text}
                           </p>
                           <div>

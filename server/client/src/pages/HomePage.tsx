@@ -74,10 +74,7 @@ export default function HomePage(): JSX.Element {
       );
       const data = await response.json();
 
-      setMessages((prev) => [
-        ...prev,
-        { text: data.response, isUser: false },
-      ]);
+      setMessages((prev) => [...prev, { text: data.response, isUser: false }]);
 
       setInputValue("");
     } catch (err) {
