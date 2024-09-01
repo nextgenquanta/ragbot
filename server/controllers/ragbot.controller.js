@@ -2,14 +2,14 @@ import { ChatGroq } from "@langchain/groq";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { HuggingFaceTransformersEmbeddings } from "@langchain/community/embeddings/hf_transformers";
 import { PrismaClient } from "@prisma/client";
-import pgvector from "pgvector"
+import pgvector from "pgvector";
 // import { HfInference } from '@huggingface/inference';
 import Embedding from "../models/embedding.model.js";
 import { cosineSimilarity } from "../utils/similarity.js";
 import dotenv from "dotenv";
 dotenv.config();
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 const promptTemplate = `
 You are an AI assistant called "College Companion" that acts as a "College Guide" by answering questions based on provided context. Your goal is to directly address the question concisely and to the point, without excessive elaboration. You are a friendly and helpful assistant. Please answer the question based on the context provided. If the question is outside the context or if you don't know the answer, kindly say, "I'm sorry, but I don't have that information. Would you like to provide more details? but don't say like "I can help you if you provide more context" you are an assistant user are there to interact with you and ask you about their college queries, data is provided by your mainatiner to you user's doesn't provide any context to you" 
 
@@ -39,7 +39,7 @@ const embeddingModel = new HuggingFaceTransformersEmbeddings({
   model: "Xenova/all-MiniLM-L6-v2",
 });
 
-// with mongodb 
+// with mongodb
 // export const getResponse = async (req, res) => {
 //   try {
 //     const { query } = req.body;
@@ -103,20 +103,18 @@ const embeddingModel = new HuggingFaceTransformersEmbeddings({
 //   }
 // };
 
+// new with prisma
 
-// new with prisma 
-
-export const getResponse = async(req, res) => {
+export const getResponse = async (req, res) => {
   try {
-
     // user query
     const { query } = req.body;
 
     // validation check
     if (!query) {
       return res.status(400).json({
-        message: "Invalid req body please provide query"
-      })
+        message: "Invalid req body please provide query",
+      });
     }
 
     // vector embeddings of user model
@@ -125,8 +123,9 @@ export const getResponse = async(req, res) => {
     // embeddings to sql format
     const sqlEmbeddings = pgvector.toSql(userQueryEmbeddings);
 
-    const dbResponse = await prisma.$queryRaw`SELECT id, text,  embedding::text FROM "TextData" ORDER BY embedding <-> ${sqlEmbeddings}::vector(384) LIMIT 5`;
-    console.log(dbResponse);
+    const dbResponse =
+      await prisma.$queryRaw`SELECT id, text,  embedding::text FROM "TextData" ORDER BY embedding <-> ${sqlEmbeddings}::vector(384) LIMIT 5`;
+    // console.log(dbResponse);
 
     const prompt = ChatPromptTemplate.fromTemplate(promptTemplate);
     const chain = prompt.pipe(chatModel);
@@ -138,13 +137,12 @@ export const getResponse = async(req, res) => {
 
     return res.status(200).json({
       message: "Response generated successfully",
-      response: response.content.toString()
-    })
-
+      response: response.content.toString(),
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      message: "Internal server error in getting response from ragbot"
-    })
+      message: "Internal server error in getting response from ragbot",
+    });
   }
-}
+};
